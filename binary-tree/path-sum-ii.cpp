@@ -15,6 +15,7 @@ public:
     bool dfs(TreeNode* root, int sum, vector<int> &v, int target){
         if(!root->left && !root->right){
             if(sum == target){
+                ans.push_back({});
                 for(auto &i : v){
                     ans.back().push_back(i);
                 }
@@ -39,7 +40,7 @@ public:
         if(!root) return {};
         vector<int> v;
         v.push_back(root->val);
-        if(!dfs(root, root->val, v, targetSum)) return {};
+        dfs(root, root->val, v, targetSum);
         return ans;
     }
 };
